@@ -1,0 +1,260 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Happy Birthday, Mom</title> 
+<style> 
+/* CSS Variables for Easy Customization */ 
+:root { 
+    --bg-dark: #121212; 
+    --card-dark: #1e1e1e; 
+    --pink-accent: #e0aaff; /* Elegant soft pink/lavender-pink tone */ 
+    --pink-muted: #d8b4f8; 
+    --text-light: #f5f5f5; 
+    --text-muted: #aaaaaa; 
+    --border-color: #2a2a2a; 
+} 
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Playfair Display', 'Georgia', serif; 
+} 
+
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text-light); 
+    min-height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    overflow-x: hidden; 
+} 
+
+/* Screen Management */ 
+.screen { 
+    width: 100%; 
+    max-width: 1200px; 
+    padding: 40px 20px; 
+    display: none; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    min-height: 100vh; 
+} 
+
+.screen.active { 
+    display: flex; 
+    animation: fadeIn 0.8s ease-in-out forwards; 
+} 
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(10px); } 
+    to { opacity: 1; transform: translateY(0); } 
+} 
+
+/* Front Page Styles */ 
+.front-title { 
+    font-size: 3.5rem; 
+    color: var(--text-light); 
+    font-weight: 400; 
+    margin-bottom: 10px; 
+    letter-spacing: 1px; 
+} 
+
+.front-subtitle { 
+    font-size: 1.2rem; 
+    color: var(--pink-accent); 
+    margin-bottom: 40px; 
+    font-style: italic; 
+    font-family: 'Segoe UI', sans-serif; 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+} 
+
+/* Navigation Layout & Buttons */ 
+.nav-actions { 
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
+    align-items: center; 
+} 
+
+.btn-continue { 
+    background-color: transparent; 
+    color: var(--pink-accent); 
+    border: 1px solid var(--pink-accent); 
+    padding: 14px 36px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+    font-family: 'Segoe UI', sans-serif; 
+    transition: all 0.3s ease; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+} 
+
+.btn-continue:hover { 
+    background-color: var(--pink-accent); 
+    color: var(--bg-dark); 
+    box-shadow: 0 0 15px rgba(224, 170, 255, 0.3); 
+} 
+
+/* Page Titles */ 
+.page-title { 
+    font-size: 2.5rem; 
+    color: var(--pink-accent); 
+    margin-bottom: 40px; 
+    font-weight: 400; 
+} 
+
+/* 2-Column Grid Layout */ 
+.memory-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 25px; 
+    width: 100%; 
+    max-width: 900px; 
+    margin-bottom: 40px; 
+} 
+
+.memory-card { 
+    background-color: var(--card-dark); 
+    border: 1px solid var(--border-color); 
+    padding: 30px; 
+    text-align: left; 
+    transition: border-color 0.3s ease; 
+    display: flex; 
+    flex-direction: column; 
+} 
+
+.memory-card:hover { 
+    border-color: var(--pink-accent); 
+} 
+
+.memory-number { 
+    font-size: 0.9rem; 
+    color: var(--pink-accent); 
+    font-family: 'Segoe UI', sans-serif; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    margin-bottom: 10px; 
+    display: block; 
+} 
+
+.memory-heading { 
+    font-size: 1.4rem; 
+    color: var(--text-light); 
+    margin-bottom: 12px; 
+    font-weight: 400; 
+} 
+
+.memory-text { 
+    font-size: 0.95rem; 
+    color: var(--text-muted); 
+    line-height: 1.6; 
+    font-family: 'Segoe UI', sans-serif; 
+} 
+
+/* Responsive design for smaller screens */ 
+@media (max-width: 768px) { 
+    .front-title { font-size: 2.3rem; } 
+    .memory-grid { grid-template-columns: 1fr; } 
+    .page-title { font-size: 2rem; } 
+    .nav-actions { flex-direction: column; width: 100%; } 
+    .btn-continue { width: 100%; justify-content: center; } 
+} 
+</style> 
+</head> 
+<body> 
+
+<!-- SCREEN 1: Front Welcome Page --> 
+<div id="screen1" class="screen active"> 
+    <h1 class="front-title">Happy Birthday to the best Mother!</h1> 
+    <p class="front-subtitle">5/20/26</p> 
+    <button class="btn-continue" onclick="navigateTo('screen1', 'screen2')">Continue &rarr;</button> 
+</div> 
+
+<!-- SCREEN 2: Recent Memories Page --> 
+<div id="screen2" class="screen"> 
+    <h2 class="page-title">Recent Memories</h2> 
+    <div class="memory-grid"> 
+        <!-- Memory 1 --> 
+        <div class="memory-card"> 
+            <span class="memory-number">Memory One</span> 
+            <h3 class="memory-heading">Support</h3> 
+            <p class="memory-text">One of my most favorite memories is your continuous ability to support me and my brothers throughout high school while still trying to maintain and figure out life yourself. You always persevered and carried strong even through the toughest days..</p> 
+        </div> 
+        <!-- Memory 2 --> 
+        <div class="memory-card"> 
+            <span class="memory-number">Memory Two</span> 
+            <h3 class="memory-heading">Relationship With God</h3> 
+            <p class="memory-text">Another one of my favorite memories is your strength through God. Even while talking me through things, you've always used God as a reminder to do what's right and help remind me to lead by the example of God and not through others. I hope to be like this when I have kids, as it has shaped my sense of right and wrong.</p> 
+        </div> 
+    </div> 
+    <div class="nav-actions"> 
+        <button class="btn-continue" onclick="navigateTo('screen2', 'screen1')">Back</button> 
+        <button class="btn-continue" onclick="navigateTo('screen2', 'screen3')">Continue &rarr;</button> 
+    </div> 
+</div> 
+
+<!-- SCREEN 3: Past Memories Page --> 
+<div id="screen3" class="screen"> 
+    <h2 class="page-title">Past Memories</h2> 
+    <div class="memory-grid"> 
+        <!-- Memory 3 --> 
+        <div class="memory-card"> 
+            <span class="memory-number">Memory Three</span> 
+            <h3 class="memory-heading">First Home</h3> 
+            <p class="memory-text">My personal favorite past memory was when we got our first real home. This is one of my favorite memories because I see it as an accomplishment of all the hard work you've shown through my childhood years, and although I didn't understand the significance when I was little, now I can see it better than ever.</p> 
+        </div> 
+        <!-- Memory 4 --> 
+        <div class="memory-card"> 
+            <span class="memory-number">Memory Four</span> 
+            <h3 class="memory-heading">Endure</h3> 
+            <p class="memory-text">Another of my favorite memories of the past has always been your ability to endure. You had a lot of trauma in your childhood growing up wasn’t always easy. But you were always able to forgive and forget. You are the example of that mentality and you have shown me what it means to be strong and to learn to forgive others even when it doesn’t feel right.</p> 
+        </div> 
+    </div> 
+    <div class="nav-actions"> 
+        <button class="btn-continue" onclick="navigateTo('screen3', 'screen2')">Back</button> 
+        <button class="btn-continue" onclick="navigateTo('screen3', 'screen4')">Continue &rarr;</button> 
+    </div> 
+</div> 
+
+<!-- SCREEN 4: Random Memories Page --> 
+<div id="screen4" class="screen"> 
+    <h2 class="page-title">Random Memories</h2> 
+    <div class="memory-grid"> 
+        <!-- Memory 5 --> 
+        <div class="memory-card"> 
+            <span class="memory-number">Memory Five</span> 
+            <h3 class="memory-heading">First Job You Were Happy With</h3> 
+            <p class="memory-text">Throughout my childhood years I've always seen you working hard and not always enjoying your job but working hard to support me and my brothers. However, when you finally found a job you liked, I found it reassuring. Seeing you come home every day and not complain about how bad the people were at work or how much pressure it is on you really reassured me that you were happy.</p> 
+        </div> 
+        <!-- Memory 6 --> 
+        <div class="memory-card"> 
+            <span class="memory-number">Memory Six</span> 
+            <h3 class="memory-heading">Coming Home From School</h3> 
+            <p class="memory-text">During the majority of my childhood, I never realized the happiness I had when I would get off the bus and you would be waiting at the bus stop for me and Kaleb to get home. However, now that I am older, it is always a random memory I refuse to forget.</p> 
+        </div> 
+    </div> 
+    <div class="nav-actions"> 
+        <button class="btn-continue" onclick="navigateTo('screen4', 'screen3')">Back</button> 
+        <button class="btn-continue" onclick="navigateTo('screen4', 'screen1')">Back to Cover</button> 
+    </div> 
+</div> 
+
+<script> 
+// Optimized Global Navigation Function 
+function navigateTo(fromScreenId, toScreenId) { 
+    document.getElementById(fromScreenId).classList.remove('active'); 
+    document.getElementById(toScreenId).classList.add('active'); 
+} 
+</script> 
+</body> 
+</html>
